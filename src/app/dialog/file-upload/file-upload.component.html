@@ -1,17 +1,25 @@
-<!-- picture-info-dialog.component.html -->
+<!-- Picture Information Dialog -->
 <h2 mat-dialog-title>Picture Information</h2>
 <div mat-dialog-content>
-    <form [formGroup]="upload" (ngSubmit)="onSubmit()" >
+    <!-- Form for picture information -->
+    <form [formGroup]="upload" (ngSubmit)="onSubmit()">
+        <!-- Name Input -->
         <mat-form-field>
             <input matInput placeholder="Name" formControlName="name" required>
         </mat-form-field>
+        <!-- Resolution Input -->
         <mat-form-field>
             <input matInput placeholder="Resolution" formControlName="resolution" required>
         </mat-form-field>
-        <input type="hidden" formControlName="picture"> <!-- Hidden input for picture data -->
+        <!-- Hidden input for picture data -->
+        <input type="hidden" formControlName="picture">
     </form>
 </div>
+<!-- Dialog Actions -->
 <div mat-dialog-actions>
+    <!-- Save Button -->
+    <!-- Only enabled if the form is valid -->
     <button mat-button type="submit" [mat-dialog-close]="upload.valid ? upload.value : null">Save</button>
+    <!-- Cancel Button -->
     <button mat-button (click)="closeDialog()">Cancel</button>
 </div>
