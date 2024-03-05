@@ -1,1 +1,3 @@
-<app-file-datagrid></app-file-datagrid>
+<!-- app.component.html -->
+<app-file-uploader (pictureUploaded)="onPictureUploaded($event)"></app-file-uploader>
+<app-file-datagrid [uploadedPicture]="uploadedPicture"></app-file-datagrid>

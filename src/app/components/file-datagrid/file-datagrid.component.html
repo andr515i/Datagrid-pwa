@@ -1,16 +1,26 @@
-<table mat-table [dataSource]="dataSource">
-
-    <!-- Define columns -->
-    <ng-container matColumnDef="column1">
-      <th mat-header-cell *matHeaderCellDef> Column 1 </th>
-      <td mat-cell *matCellDef="let element"> {{element.column1}} </td>
+<!-- file-datagrid.component.html -->
+<table mat-table [dataSource]="pictures">
+    <!-- Picture Column -->
+    <ng-container matColumnDef="picture">
+      <th mat-header-cell *matHeaderCellDef> Picture </th>
+      <td mat-cell *matCellDef="let picture">
+        <img [src]="picture.picture" width="100" height="100" (click)="openPictureDialog(picture.picture)">
+      </td>
     </ng-container>
   
-    <!-- Add more columns as needed -->
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let picture"> {{ picture.name }} </td>
+    </ng-container>
   
-    <!-- Row definition -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!-- Resolution Column -->
+    <ng-container matColumnDef="resolution">
+      <th mat-header-cell *matHeaderCellDef> Resolution </th>
+      <td mat-cell *matCellDef="let picture"> {{ picture.resolution }} </td>
+    </ng-container>
   
+    <tr mat-header-row *matHeaderRowDef="['picture', 'name', 'resolution']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['picture', 'name', 'resolution'];"></tr>
   </table>
   
